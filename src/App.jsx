@@ -6,6 +6,9 @@ import { IoMdClose } from "react-icons/io";
 import PageControl from "./Components/PageControl";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import Navbar from "./Components/Navbar";
+import GraphView from "./Components/GraphView"
+
+
 function App() {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
@@ -23,7 +26,7 @@ function App() {
 
   function executeQuery() {
     setHome(false);
-    fetch(`http://localhost:8080/hello/${query}`)
+    fetch(`http://localhost:8080/search/query/${query}`)
       .then((response) => response.json())
       .then((json) => {
         setData(
@@ -106,7 +109,9 @@ function App() {
           )}
         </div>
       ) : (
-        <div>TEST</div>
+        <div>
+          <GraphView></GraphView>
+        </div>
       )}
     </>
   );
