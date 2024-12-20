@@ -109,7 +109,7 @@ function App() {
           )}
         </div>
       ) : (
-        <div>
+        <div className="h-full">
           <GraphView></GraphView>
         </div>
       )}
