@@ -4,7 +4,7 @@ This project consists of two main components:
 2. **[Backend](https://github.com/Sim-sat/searchBackEnd.git)**: A Quarkus-based application running on an Azure Virtual Machine (VM) that powers the API and handles data processing. The webserver runs in a nginx docker.
 
 ---
-
+# [Live Preview](https://searchenginecheese.netlify.app/ "Live Preview")
 
 ### Features
 - **Intranet Search**: Search across 260 intranet pages
@@ -25,7 +25,7 @@ This project consists of two main components:
 
 The content of the sites is very basic and the site has no real use. The sites contain a lot of content about cheeses so use corresponding queries. 
 
-### [Live Preview](https://searchenginecheese.netlify.app/ "Live Preview")
+
 
 
 ### Prerequisites
