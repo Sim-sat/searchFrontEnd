@@ -14,8 +14,10 @@ function App() {
   const [query, setQuery] = useState("");
   const [home, setHome] = useState(true);
   const [website, setWebsite] = useState({});
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [searchOrGraph, setSearchOrGraph] = useState("search");
+  const [algo, setAlgo] = useState("pagerank");
+  const [resultsFound, setResultsFound] = useState(false);
 
   function handleQueryChange(e) {
     setQuery(e.target.value);
@@ -26,9 +28,15 @@ function App() {
 
   function executeQuery() {
     setHome(false);
-    fetch(`http://localhost:8080/search/query/${query}`)
+    
+    fetch(`http://172.211.54.172:8080/search/query/?word=${query}&algorithm=${algo}`)
       .then((response) => response.json())
       .then((json) => {
+        
+        json.length === 0 ?( 
+        setResultsFound(false),
+        setData([<div>No results found... Try 'fromage'</div>])):(
+        setResultsFound(true),
         setData(
           json.map((item) => (
             <div className=" h-32  font-normal truncate text-wrap ">
@@ -60,7 +68,7 @@ function App() {
               </div>
             </div>
           ))
-        );
+        ));
       })
       .catch((error) => console.error(error));
   }
@@ -68,7 +76,7 @@ function App() {
   return (
     <>
       <Navbar setSearchOrGraph={setSearchOrGraph}/>
-      {searchOrGraph === "search" ? (
+      {searchOrGraph === "search" && (
         <div className="flex mt-20">
           <div
             className={`h-screen flex-col justify-start gap-10  content-center pr-2 flex ${
@@ -80,6 +88,8 @@ function App() {
               executeQuery={executeQuery}
               home={home}
               setHome={setHome}
+              setAlgo={(input) => setAlgo(input)}
+              algo={algo}
             ></Homepage>
 
             <div className="ml-10 flex-col flex gap-5 ">
@@ -87,7 +97,7 @@ function App() {
               {page === 2 && data.slice(10, 20)}
               {page === 3 && data.slice(20, 30)}
             </div>
-            {!home && <PageControl page={page} setPage={setPage} />}
+            {!home && resultsFound && <PageControl page={page} setPage={setPage} />}
           </div>
 
           {Object.keys(website).length !== 0 && (
@@ -108,11 +118,15 @@ function App() {
             </div>
           )}
         </div>
-      ) : (
-        <div className="h-full">
+      ) }
+        <div style={{
+          visibility: searchOrGraph === "search" ? "hidden" : "visible",
+  
+        }} 
+              className="h-full visible relative">
           <GraphView></GraphView>
         </div>
-      )}
+      
     </>
   );
 }
