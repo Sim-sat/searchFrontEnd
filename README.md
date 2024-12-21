@@ -12,14 +12,14 @@ This project consists of two main components:
   - tdidf score
   - cosine similarity
   - cosine similarity + pagerank
- ![search](src/assets/circular.png)
+![search](src/assets/search.png)
 - **Graph Visualization**: Display relationships between intranet pages in an interactive graph.
     - hover node to highlight all links
     - click node to see tokens with tf-score
     - circular mode
-    ![circular](src/assets/circular.png)
+  ![circular](src/assets/circular.png)
     - force mode
-    ![force](src/assets/force.png)
+  ![force](src/assets/force.png)
 
 - **PageRank and TF Score Visualization**: Visualize page ranking and term frequency scores.
 
