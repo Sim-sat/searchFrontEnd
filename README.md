@@ -1,7 +1,7 @@
 This project consists of two main components:
 
-1. **[Frontend](https://github.com/Sim-sat/searchFrontEnd)**: A React application that provides a feature-rich interface for searching and visualizing data from an intranet.
-2. **[Backend](https://github.com/Sim-sat/searchBackEnd.git)**: A Quarkus-based application running on an Azure Virtual Machine (VM) that powers the API and handles data processing. The webserver runs in a nginx docker
+1. **[Frontend](https://github.com/Sim-sat/searchFrontEnd)**: A React application that provides an interface for searching and visualizing data from an intranet.
+2. **[Backend](https://github.com/Sim-sat/searchBackEnd.git)**: A Quarkus-based application running on an Azure Virtual Machine (VM) that powers the API and handles data processing. The webserver runs in a nginx docker.
 
 ---
 
@@ -12,9 +12,18 @@ This project consists of two main components:
   - tdidf score
   - cosine similarity
   - cosine similarity + pagerank
+ ![search](src/assets/circular.png)
 - **Graph Visualization**: Display relationships between intranet pages in an interactive graph.
+    - hover node to highlight all links
+    - click node to see tokens with tf-score
+    - circular mode
+    ![circular](src/assets/circular.png)
+    - force mode
+    ![force](src/assets/force.png)
+
 - **PageRank and TF Score Visualization**: Visualize page ranking and term frequency scores.
-https://searchenginecheese.netlify.app/
+
+The content of the sites is very basic and the site has no real use. The sites contain a lot of content about cheeses so use corresponding queries. 
 
 ### [Live Preview](https://searchenginecheese.netlify.app/ "Live Preview")
 
@@ -24,20 +33,21 @@ https://searchenginecheese.netlify.app/
 - npm
 
 ### Setup
-1. Clone the repository:
+1. Start backend
+2. Clone the repository:
    ```bash
    git clone (https://github.com/Sim-sat/searchFrontEnd.git)
    cd searchFrontEnd
    ```
-2. Install dependencies:
+3. Install dependencies:
    ```bash
    npm install
    ```
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm start
    ```
-4. Access the application at `http://localhost:5173`.
+5. Access the application at `http://localhost:5173`.
 
 ### Build
 To create a production build:
