@@ -29,7 +29,7 @@ function App() {
   function executeQuery() {
     setHome(false);
     
-    fetch(`https://172.211.54.172:8443/search/query/?word=${query}&algorithm=${algo}`)
+    fetch(`http://172.211.54.172:8080/search/query/?word=${query}&algorithm=${algo}`)
       .then((response) => response.json())
       .then((json) => {
         
