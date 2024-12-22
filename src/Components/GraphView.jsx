@@ -125,7 +125,7 @@ export default function GraphView() {
   }
 
   useEffect(() => {
-    fetch("https://172.211.54.172:8443/search/all")
+    fetch("http://172.211.54.172:8080/search/all")
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error("Fehler beim Abrufen der Daten:", error));
